@@ -1,64 +1,65 @@
-# Visionary Canvas
+# SUPTO | Creative Developer Portfolio
 
-## Project info
+A high-performance, immersive personal portfolio website built to demonstrate modern web capabilities, featuring advanced animations, 3D aesthetic elements, and a focus on premium user experience.
 
-A modern web application built with React, TypeScript, and Vite.
+![Portfolio Preview](./public/placeholder.svg)
 
-## How can I edit this code?
+## ✨ Key Features
 
-There are several ways of editing your application.
+- **Staggered Navigation**: A custom full-screen menu overlay with large typography and sequential entrance animations.
+- **Magic Bento Grid**: An interactive "Skills" section utilizing a responsive masonry layout with spotlight/glow hover effects.
+- **Animated Contact Wizard**: A multi-step conversational form interface with real-time validation and smooth state transitions.
+- **Glitch Text Effects**: custom "matrix-decoding" text animations for headers and key interactions.
+- **Responsive Design**: Fully optimized layouts for mobile, tablet, and desktop experiences.
+- **Modern Aesthetics**: "Windows 11" inspired abstract 3D visual language and glassmorphism.
 
-**Use your preferred IDE**
+## 🛠️ Tech Stack
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- **Framework**: React 18 + Vite
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Animation**: Framer Motion
+- **Icons**: Lucide React & React Icons
+- **UI Components**: Radix UI (via shadcn/ui)
 
-Follow these steps:
+## 🚀 Getting Started
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### Prerequisites
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+Ensure you have Node.js (v18+) installed on your machine.
 
-# Step 3: Install the necessary dependencies.
-npm i
+### Installation
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+1.  **Clone the repository**
+    ```bash
+    git clone https://github.com/supto707/portfolio-mine.git
+    cd portfolio-mine
+    ```
 
-**Edit a file directly in GitHub**
+2.  **Install dependencies**
+    ```bash
+    npm install
+    ```
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+3.  **Start the development server**
+    ```bash
+    npm run dev
+    ```
 
-**Use GitHub Codespaces**
+4.  **Build for production**
+    ```bash
+    npm run build
+    ```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 📂 Project Structure
 
-## What technologies are used for this project?
+- `src/components/sections`: Core page sections (Hero, Work, Skills, Contact, etc.)
+- `src/components`: Reusable UI components (MagicCard, GlitchText, Navbar, etc.)
+- `src/lib`: Utility functions and configuration.
 
-This project is built with:
+## 📄 License
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+This project is open source and available under the [MIT License](LICENSE).
 
-## How can I deploy this project?
-
-You can deploy this project to any static hosting service like Vercel, Netlify, or GitHub Pages.
-
-For production build:
-```sh
-npm run build
-```
-
-The built files will be in the `dist` directory.
+---
+*Designed & Developed by Sadman Arefin Supto*
