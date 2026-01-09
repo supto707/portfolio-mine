@@ -9,6 +9,7 @@ const useLenis = () => {
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
+      touchMultiplier: 0.8,
     });
 
     function raf(time: number) {

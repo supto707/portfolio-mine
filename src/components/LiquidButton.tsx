@@ -18,8 +18,8 @@ const LiquidButton = ({ children, onClick, variant = "primary", className = "" }
           relative overflow-hidden group
           px-8 py-4 rounded-full font-medium
           transition-colors duration-500
-          ${variant === "primary" 
-            ? "bg-foreground text-background hover:text-foreground" 
+          ${variant === "primary"
+            ? "bg-foreground text-background hover:text-background"
             : "border border-foreground/20 text-foreground hover:border-foreground/50"
           }
           ${className}
@@ -34,7 +34,7 @@ const LiquidButton = ({ children, onClick, variant = "primary", className = "" }
             transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
           />
         )}
-        
+
         {/* Ripple on Click */}
         <motion.span
           className="absolute inset-0 pointer-events-none"
@@ -46,7 +46,7 @@ const LiquidButton = ({ children, onClick, variant = "primary", className = "" }
           }}
           transition={{ duration: 0.5 }}
         />
-        
+
         <span className="relative z-10 flex items-center gap-3">
           {children}
         </span>

@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Github, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useRef, useState } from "react";
 
@@ -13,6 +13,8 @@ export const projects = [
     image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop",
     category: "MANAGEMENT SYSTEM",
     link: "https://pharmacy-client-supto.vercel.app/",
+    githubClient: "https://github.com/supto707/pharmacy-client",
+    githubServer: "https://github.com/supto707/pharmacy-server",
   },
   {
     id: "microtask",
@@ -20,9 +22,11 @@ export const projects = [
     problem: "Connecting businesses with micro-workforce",
     description: "A robust earning platform allowing users to complete small tasks for rewards, featuring wallet management and admin controls.",
     stack: ["React", "Firebase", "Stripe", "Framer Motion"],
-    image: "https://images.unsplash.com/photo-1633078654545-546219dad4e3?q=80&w=2574&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?q=80&w=2574&auto=format&fit=crop",
     category: "SAAS PLATFORM",
     link: "https://ph-a13-b12-client.vercel.app/",
+    githubClient: "https://github.com/supto707/ph-a13-b12-client",
+    githubServer: "https://github.com/supto707/ph-a13-b12-server",
   },
   {
     id: "supto-dev",
@@ -33,6 +37,8 @@ export const projects = [
     image: "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=2574&auto=format&fit=crop",
     category: "AGENCY PORTFOLIO",
     link: "https://supto-dot-dev-client.vercel.app/",
+    githubClient: "https://github.com/supto707/supto-dot-dev-client",
+    githubServer: "https://github.com/supto707/supto-dot-dev-server",
   },
 ];
 
@@ -167,9 +173,9 @@ const StackedProjectCard = ({ project, index }: { project: typeof projects[0]; i
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onMouseMove={handleMouseMove}
-      className="sticky w-full h-[75vh] rounded-lg overflow-hidden border border-foreground/10 bg-card group cursor-pointer"
+      className="sticky w-full h-[75vh] rounded-lg overflow-hidden border border-foreground/10 bg-card group"
     >
-      <a href={project.link || "#"} target="_blank" rel="noopener noreferrer" className="block w-full h-full">
+      <div className="relative w-full h-full">
         {/* Background Image */}
         <motion.div
           className="absolute inset-0"
@@ -210,8 +216,9 @@ const StackedProjectCard = ({ project, index }: { project: typeof projects[0]; i
             {project.description}
           </p>
 
+
           {/* Stack */}
-          <div className="flex flex-wrap gap-2 mt-6">
+          <div className="flex flex-wrap gap-2 mt-6 mb-8">
             {project.stack.map((tech) => (
               <span
                 key={tech}
@@ -221,22 +228,53 @@ const StackedProjectCard = ({ project, index }: { project: typeof projects[0]; i
               </span>
             ))}
           </div>
+
+          {/* Action Buttons */}
+          <div className="flex flex-wrap gap-4 z-30 relative">
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-full font-mono text-[10px] md:text-xs font-bold hover:bg-primary/90 hover:scale-105 active:scale-95 transition-all duration-300 uppercase tracking-wider shadow-lg hover:shadow-primary/25"
+            >
+              <ExternalLink className="w-3 h-3 md:w-4 md:h-4" />
+              Live Preview
+            </a>
+            <a
+              href={project.githubClient}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 py-2 bg-secondary text-secondary-foreground rounded-full font-mono text-[10px] md:text-xs font-bold hover:bg-secondary/80 hover:scale-105 active:scale-95 transition-all duration-300 uppercase tracking-wider border border-border shadow-lg"
+            >
+              <Github className="w-3 h-3 md:w-4 md:h-4" />
+              Client Repo
+            </a>
+            <a
+              href={project.githubServer}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 py-2 bg-secondary text-secondary-foreground rounded-full font-mono text-[10px] md:text-xs font-bold hover:bg-secondary/80 hover:scale-105 active:scale-95 transition-all duration-300 uppercase tracking-wider border border-border shadow-lg"
+            >
+              <Github className="w-3 h-3 md:w-4 md:h-4" />
+              Server Repo
+            </a>
+          </div>
         </div>
 
-        {/* Magnetic Cursor Follower */}
+        {/* Magnetic Cursor Follower - Only visible on non-touch devices and when not hovering buttons */}
         {isHovered && (
           <motion.div
-            className="absolute pointer-events-none z-20 w-20 h-20 rounded-full bg-primary flex items-center justify-center"
+            className="absolute pointer-events-none z-20 w-20 h-20 rounded-full bg-primary/20 backdrop-blur-sm flex items-center justify-center border border-primary/50"
             animate={{
               x: mousePosition.x - 40,
               y: mousePosition.y - 40,
             }}
             transition={{ type: "spring", stiffness: 150, damping: 15 }}
           >
-            <ArrowUpRight className="w-6 h-6 text-primary-foreground" />
+            <ArrowUpRight className="w-6 h-6 text-primary" />
           </motion.div>
         )}
-      </a>
+      </div>
     </motion.div>
   );
 };
