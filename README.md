@@ -8,7 +8,7 @@ A high-performance, immersive personal portfolio website built to demonstrate mo
 
 - **Staggered Navigation**: A custom full-screen menu overlay with large typography and sequential entrance animations.
 - **Magic Bento Grid**: An interactive "Skills" section utilizing a responsive masonry layout with spotlight/glow hover effects.
-- **Animated Contact Wizard**: A multi-step conversational form interface with real-time validation and smooth state transitions.
+- **Animated Contact Wizard**: A multi-step conversational form interface with real-time validation, smooth state transitions, and EmailJS integration for real email delivery.
 - **Glitch Text Effects**: custom "matrix-decoding" text animations for headers and key interactions.
 - **Responsive Design**: Fully optimized layouts for mobile, tablet, and desktop experiences.
 - **Modern Aesthetics**: "Windows 11" inspired abstract 3D visual language and glassmorphism.
@@ -41,12 +41,20 @@ Ensure you have Node.js (v18+) installed on your machine.
     npm install
     ```
 
-3.  **Start the development server**
+3.  **Configure EmailJS (for contact form)**
+    
+    To enable the contact form email functionality:
+    
+    - Copy `.env.example` to `.env.local`
+    - Follow the setup guide in [EMAILJS_SETUP.md](./EMAILJS_SETUP.md)
+    - Add your EmailJS credentials to `.env.local`
+
+4.  **Start the development server**
     ```bash
     npm run dev
     ```
 
-4.  **Build for production**
+5.  **Build for production**
     ```bash
     npm run build
     ```

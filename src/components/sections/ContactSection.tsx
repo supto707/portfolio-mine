@@ -2,9 +2,11 @@ import { useState, useRef } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { Send, Mail, Github, Linkedin, ArrowUpRight, MousePointer } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import emailjs from "@emailjs/browser";
 import MagneticWrapper from "../MagneticWrapper";
 import GeometricShapes from "../GeometricShapes";
 import GlitchText from "../GlitchText";
+
 const ContactSection = () => {
   const { toast } = useToast();
   const [isHovered, setIsHovered] = useState(false);
@@ -72,16 +74,57 @@ const ContactSection = () => {
 
     setIsSubmitting(true);
 
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      // Get EmailJS credentials from environment variables
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
 
-    toast({
-      title: "Message sent!",
-      description: "I'll get back to you as soon as possible.",
-    });
+      // Check if credentials are configured
+      if (!publicKey || !serviceId || !templateId) {
+        console.error("EmailJS credentials not configured");
+        toast({
+          title: "Configuration Error",
+          description: "Email service is not configured. Please contact the site administrator.",
+          variant: "destructive",
+        });
+        setIsSubmitting(false);
+        return;
+      }
 
-    setFormData({ name: "", email: "", message: "" });
-    setCurrentStep(0);
-    setIsSubmitting(false);
+      // Prepare template parameters
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+        to_name: "Supto", // Your name
+      };
+
+      // Send email using EmailJS
+      await emailjs.send(
+        serviceId,
+        templateId,
+        templateParams,
+        publicKey
+      );
+
+      toast({
+        title: "Message sent!",
+        description: "I'll get back to you as soon as possible.",
+      });
+
+      setFormData({ name: "", email: "", message: "" });
+      setCurrentStep(0);
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      toast({
+        title: "Failed to send message",
+        description: "Something went wrong. Please try again or contact me directly via email.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const socialLinks = [
